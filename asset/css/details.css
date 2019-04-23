@@ -1,0 +1,23 @@
+img{
+margin: 30px;
+width: 450px;
+height: 450px
+}
+h2,p{
+  margin: 30px;
+}
+div.rounded {
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+label {
+    display: block;
+}
+input {
+    display: block;
+}
+#previewTable {
+    width: 100%;
+}

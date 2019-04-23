@@ -1,0 +1,56 @@
+p{
+  margin:30px;
+  font-size: 30px
+}
+a {
+  display:inline;
+}
+li div {
+  display: inline;
+
+width: 10px;
+text-align: center;
+padding: 0px;
+font-weight:  bold;
+cursor:  pointer;
+}
+input{
+    width: 40%;
+    padding: 10px;
+    margin: 5px;
+    background:#181c22;
+    border: 0;
+    float: left;
+    font-size: 20px;
+    color: #989898;
+}
+
+button{
+    padding: 10px;
+    width: 40%;
+    margin: 3px;
+    background: #23282e;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+li:hover{
+    background: rgba(0,0,0,0.2);
+}
+
+  header{
+  background-color:#5f5252;
+    z-index:1;
+  }
+  .section{
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+  }
+  .tabs .indicator{
+    background-color: #1a237e;
+  }
+  .tabs .tab a:focus, .tabs .tab a:focus.active{
+    background: transparent;
+  }
