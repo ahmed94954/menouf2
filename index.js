@@ -85,6 +85,19 @@ app.get('/electronics', function (req, res) {
 app.get('/logInAdmin', function (req, res) {
   res.render('logInAdmin')
 })
+app.get('/search', function (req, res) {
+  res.render('search', {title:'find what u want' , user:req.user})
+})
+app.post('/search', function (req, res) {
+  var name = req.body.search;
+  var regex = new RegExp(name , 'i');
+  resturant.find({'$or' : [{'name':regex}]},(err,data) => {
+    if(err){
+      console.log(err);
+    }
+    res.redirect('/resturant-profile/'+data[0]._id);
+  })
+})
 
 
 

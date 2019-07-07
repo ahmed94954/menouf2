@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Playfair+Display:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/animate.css">
@@ -85,6 +86,13 @@
           <div class="col-md-10 text-center">
             <h1 class="heading" data-aos="fade-up">Our resturant</h1>
             <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">Enjoy your stay.</p>
+
+  <div class="d-flex justify-content-center h-100">
+    <div class="searchbar">
+      <input class="search_input" type="text" name="" placeholder="Search...">
+      <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+    </div>
+  </div>
           </div>
         </div>
         <!-- <a href="#" class="scroll-down">Scroll Down</a> -->
@@ -94,7 +102,9 @@
 <!--
 <element onload="myScript">
     </footer> -->
-
+    <div class="results">
+      <ul id="users"></ul>
+    </div>
     <script src="./asset/js/jquery-3.2.1.min.js"></script>
     <script src="./asset/js/popper.min.js"></script>
     <script src="./asset/js/bootstrap.min.js"></script>
@@ -106,5 +116,96 @@
     <script>;
     window.onload = renderInf();
     </script>
+
+    <script>
+    $(document).ready(function() {
+      var client = algoliasearch('3NEC3P6A6S', '8816a21a338a306fb0cd0624dcf4972d');
+      var index = client.initIndex('<INDEX NAME>');
+      var $input = $('input');
+      $input.keyup(function() {
+        index.search($input.val(), {
+          hitsPerPage: 10,
+          facets: '*'
+        }, searchCallback);
+      }).focus();
+    });
+
+    function searchCallback(err, content) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      console.log(content);
+    };
+
+    function searchCallback(err, content) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+  var $users = $('#users');
+  $users.empty();
+
+  for (var i = 0; i < content.hits.length; i++) {
+    $users.append('<li>' + content.hits[i].name + '</li>');
+  }
+};
+    </script>
+
+    <style>
+
+    body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e74c3c !important;
+    }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
+    </style>
   </body>
 </html>
