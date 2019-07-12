@@ -143,7 +143,7 @@ console.log(sers)
 sers.addEventListener('click', (e) => {
   e.preventDefault;
   var ss = document.getElementById("search").value;
-  console.log(ss)
+  console.log(ss);
 localStorage.setItem("x", ss);
 })
 }
