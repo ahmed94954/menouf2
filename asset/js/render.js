@@ -138,5 +138,12 @@ db.collection('resturant').where('type', '==', 'bad').onSnapshot(snapshot => {
 });
 
 });
-
+var sers = document.getElementById("sers")
+console.log(sers)
+sers.addEventListener('click', (e) => {
+  e.preventDefault;
+  var ss = document.getElementById("search").value;
+  console.log(ss)
+localStorage.setItem("x", ss);
+})
 }
