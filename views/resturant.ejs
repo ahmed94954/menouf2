@@ -54,30 +54,40 @@
             </div>
             <!-- END menu-toggle -->
 
-            <div class="site-navbar js-site-navbar">
-              <nav role="navigation">
-                <div class="container">
-                  <div class="row full-height align-items-center">
-                    <div class="col-md-6">
-                      <ul class="list-unstyled menu">
-                        <li><a href="/">Home</a></li>
-                        <li class="active"><a href="hotel">Hotel</a></li>
-                            <li><a href="resturant">resturant</a></li>
-                            <li><a href="electronics">electronics</a></li>
-                            <li><a href="medical">medical</a></li>
-                            <li><a href="logInAdmin">admin</a></li>
-                            <li><a href="logIn"class="fab fa-google fa-lg">chat</a></li>
-                        <li><a href="logInAdmin">sign in</a></li>
-                      </ul>
+                        <div class="site-navbar js-site-navbar" style="background-image: url(./asset/img/aaa.jpg)">
+                          <nav role="navigation">
+                            <div class="container">
+                              <div class="row full-height align-items-center">
+                                <div class="col-md-6">
+                                  <ul class="list-unstyled menu">
+                                    <li><a href="/">Home</a></li>
+                                    <li class="active"><a href="hotel">Hotel</a></li>
+                                        <li><a href="resturant">Resturant</a></li>
+                                        <li><a href="electronics">Electronics</a></li>
+
+
+                                  </ul>
+
+                                </div>
+                                <div class="col-md-6">
+                                 <ul class="list-unstyled menu">
+                                   <li><a href="medical">Medical</a></li>
+                                   <li><a href="logInAdmin">Admin</a></li>
+                                   <li><a href="logIn"class="fab fa-google fa-lg">Chat</a></li>
+                               <li><a href="logInAdmin">Sign in</a></li>
+                               <li class="logged-in">
+                                 <a href="#" class="grey-text" id="logout">Logout</a>
+                               </li>
+                                     </ul>
+                                  </div>
+                              </div>
+                            </div>
+                          </nav>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+                </header>
     <!-- END head -->
 
     <section class="site-hero overlay page-inside" style="background-image: url(./asset/img/rest.jpg)">
@@ -89,8 +99,9 @@
 
   <div class="d-flex justify-content-center h-100">
     <div class="searchbar">
-      <input class="search_input" type="text" name="" placeholder="Search...">
-      <a href="search" class="search_icon"><i class="fas fa-search"></i></a>
+
+      <input id="search" class="search_input" type="text" name=""  value="" placeholder="Search...">
+      <a href='search' class="search_icon" id="sers" ><i class="fas fa-search"></i></a>
     </div>
   </div>
           </div>
@@ -98,13 +109,27 @@
         <!-- <a href="#" class="scroll-down">Scroll Down</a> -->
       </div>
     </section>
-    <!-- END section -->
-<!--
-<element onload="myScript">
-    </footer> -->
-    <div class="results">
-      <ul id="users"></ul>
+    <div class="link">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+                  <a href="#SECTION1" >Five stars</a>
+          </div>
+          <div class="col-sm">
+              <a href="#SECTION2">Good Service</a>
+          </div>
+          <div class="col-sm">
+              <a href="#SECTION3">General</a>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="results" id="SECTION1" style="display:none">
+      <h1 class="hed">five star resturant</h1>  </div>
+      <div class="results" id="SECTION2" style="display:none">
+        <h1 class="hed">good</h1>  </div>
+        <div class="results" id="SECTION3" style="display:none">
+          <h1 class="hed">general</h1>  </div>
     <script src="./asset/js/jquery-3.2.1.min.js"></script>
     <script src="./asset/js/popper.min.js"></script>
     <script src="./asset/js/bootstrap.min.js"></script>
@@ -115,44 +140,17 @@
       <script src="./asset/js/render.js"></script>
     <script>;
     window.onload = renderInf();
-    </script>
-
-    <script>
-    $(document).ready(function() {
-      var client = algoliasearch('3NEC3P6A6S', '8816a21a338a306fb0cd0624dcf4972d');
-      var index = client.initIndex('<INDEX NAME>');
-      var $input = $('input');
-      $input.keyup(function() {
-        index.search($input.val(), {
-          hitsPerPage: 10,
-          facets: '*'
-        }, searchCallback);
-      }).focus();
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
+      e.preventDefault();
+      firebase.auth().signOut().then(function() {
+  console.log('Signed Out');
+  window.location.reload(false);
+})
     });
-
-    function searchCallback(err, content) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      console.log(content);
-    };
-
-    function searchCallback(err, content) {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  var $users = $('#users');
-  $users.empty();
-
-  for (var i = 0; i < content.hits.length; i++) {
-    $users.append('<li>' + content.hits[i].name + '</li>');
-  }
-};
     </script>
+
+
 
     <style>
 
@@ -161,7 +159,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    background: #e74c3c !important;
+    background: #7b6f6e !important;
     }
 
     .searchbar{
@@ -205,6 +203,23 @@
     align-items: center;
     border-radius: 50%;
     color:white;
+    }
+    a {
+    margin: 2px;
+    padding: 20px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #0b0567;}
+    .link{
+
+    padding: 10px;
+    margin: 10px;
+    }
+.hed{
+      position: relative;
+      left: 536px;
+margin: 6px;
+padding: 15px;
     }
     </style>
   </body>

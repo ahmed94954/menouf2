@@ -51,30 +51,40 @@
             </div>
             <!-- END menu-toggle -->
 
-            <div class="site-navbar js-site-navbar">
-              <nav role="navigation">
-                <div class="container">
-                  <div class="row full-height align-items-center">
-                    <div class="col-md-6">
-                      <ul class="list-unstyled menu">
-                        <li><a href="/">Home</a></li>
-                        <li class="active"><a href="hotel">Hotel</a></li>
-                            <li><a href="resturant">resturant</a></li>
-                            <li><a href="electronics">electronics</a></li>
-                            <li><a href="medical">medical</a></li>
-                            <li><a href="logInAdmin">admin</a></li>
-                            <li><a href="logIn"class="fab fa-google fa-lg">chat</a></li>
-                        <li><a href="logInAdmin">sign in</a></li>
-                      </ul>
+                        <div class="site-navbar js-site-navbar" style="background-image: url(./asset/img/aaa.jpg)">
+                          <nav role="navigation">
+                            <div class="container">
+                              <div class="row full-height align-items-center">
+                                <div class="col-md-6">
+                                  <ul class="list-unstyled menu">
+                                    <li><a href="/">Home</a></li>
+                                    <li class="active"><a href="hotel">Hotel</a></li>
+                                        <li><a href="resturant">Resturant</a></li>
+                                        <li><a href="electronics">Electronics</a></li>
+
+
+                                  </ul>
+
+                                </div>
+                                <div class="col-md-6">
+                                 <ul class="list-unstyled menu">
+                                   <li><a href="medical">Medical</a></li>
+                                   <li><a href="logInAdmin">Admin</a></li>
+                                   <li><a href="logIn"class="fab fa-google fa-lg">Chat</a></li>
+                               <li><a href="logInAdmin">Sign in</a></li>
+                               <li class="logged-in">
+                                 <a href="#" class="grey-text" id="logout">Logout</a>
+                               </li>
+                                     </ul>
+                                  </div>
+                              </div>
+                            </div>
+                          </nav>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+                </header>
     <!-- END head -->
 
     <section class="site-hero overlay page-inside" style="background-image: url(./asset/img/32.jpg)">
@@ -134,7 +144,14 @@
         );
     });
 
-
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
+      e.preventDefault();
+      firebase.auth().signOut().then(function() {
+  console.log('Signed Out');
+  window.location.reload(false);
+})
+    });
     </script>
   </body>
 </html>

@@ -209,7 +209,14 @@ db.collection('comment').onSnapshot(snapshot => {
 })
 
 })
-
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (e) => {
+  e.preventDefault();
+  firebase.auth().signOut().then(function() {
+console.log('Signed Out');
+window.location.reload(false);
+})
+});
 
 
     </script>

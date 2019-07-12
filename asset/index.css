@@ -51,6 +51,3 @@ li:hover{
   .tabs .indicator{
     background-color: #1a237e;
   }
-  .tabs .tab a:focus, .tabs .tab a:focus.active{
-    background: transparent;
-  }

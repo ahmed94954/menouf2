@@ -24,18 +24,30 @@
    <div class="container">
     <ul class="row" id="addItem">
   </ul>
+
+
   <form id="addinfo">
 
     <table id="previewTable">
     <thead id="columns"></thead>
     <tbody id="previews"></tbody>
      </table>
+
+
+
+
+
+
+
     <input type="text" name="name" id="name" placeholder="name"/>
     <input type="text" name="description" id="description" placeholder="description"/>
     <input type="number" name="number" id="number" placeholder="number"/>
+    <input type="text" name="rate" id="rate" placeholder="rate must be excellent or medium or bad" required/>
     <input type="text" name="adress" id="adress" placeholder="adress"/>
     <input type="file" name="filefield" multiple="multiple" id="img">
+
   <button id="upload">upload</button>
+
   </form>
    </div>
    <script>
@@ -103,17 +115,20 @@ var storageRef = firebase.storage().ref('/images/' + selectedFile[i].name+Date.n
          name: form.name.value,
          adress:form.adress.value,
          number:form.number.value,
-         description:form.description.value
+         description:form.description.value,
+         type:form.number.rate
        });
        form.name.value= ""
        form.adress.value= ""
        form.number.value= ""
        form.description.value= ""
+      form.number.rate=""
      }
 });
 })
 }
 })
    </script>
+
   </body>
 </html>

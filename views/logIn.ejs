@@ -21,47 +21,14 @@
       </script>
         <meta charset="utf-8">
         <title>Login</title>
-        <style>
-            body{
-                font-family: arial;
-                margin: 0;
-            }
-            nav{
-                background: #ff5353;
-                padding: 20px 10px;
-            }
-            nav ul{
-                max-width: 960px;
-                margin: 0 auto;
-                padding: 0;
-            }
-            nav li{
-                list-style-type: none;
-                display: inline-block;
-                margin: 0 10px 0 0;
-            }
-            nav a{
-                color: #fff;
-                font-size: 18px;
-                background: rgba(255,255,255,0.2);
-                text-decoration: none;
-                padding: 10px;
-                display: block;
-            }
-            main, header{
-                max-width: 960px;
-                margin: 30px auto;
-                padding: 0 10px;
-                color: #333;
-            }
-            .google-btn{
-                color: #fff;
-                text-decoration: none;
-                font-size: 18px;
-                padding: 10px;
-                background: #ff5353;
-            }
-            #mario-chat{
+<style>
+h2{
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #575ed8;
+}
+
+#mario-chat{
     max-width: 600px;
     margin: 30px auto;
     border: 1px solid #ddd;
@@ -112,34 +79,113 @@ input{
 }
 
 button{
-
     background: #575ed8;
     color: #fff;
     font-size: 18px;
     border: 0;
     padding: 12px 0;
-    width: 50%;
+    width: 100%;
     border-radius: 0 0 2px 2px;
 }
+
+
 #google-signin{
   margin: 300px;
 }
         </style>
-    </head>
-    <body>
 
+
+          <title>Colorlib Villa</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Playfair+Display:400,700" rel="stylesheet">
+
+          <link rel="stylesheet" href="./asset/css/bootstrap.css">
+          <link rel="stylesheet" href="./asset/css/animate.css">
+          <link rel="stylesheet" href="./asset/css/owl.carousel.min.css">
+          <link rel="stylesheet" href="./asset/css/aos.css">
+
+          <link rel="stylesheet" href="./asset/fonts/ionicons/css/ionicons.min.css">
+          <link rel="stylesheet" href="./asset/fonts/fontawesome/css/font-awesome.min.css">
+
+          <!-- Theme Style -->
+          <link rel="stylesheet" href="./asset/css/style.css">
+        </head>
+        <body>
+
+          <header class="site-header">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-4 site-logo" data-aos="fade"><a href="/"><em>Menuf</em></a></div>
+                <div class="col-8">
+
+
+                  <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <!-- END menu-toggle -->
+
+
+                              <div class="site-navbar js-site-navbar" style="background-image: url(./asset/img/aaa.jpg)">
+                                <nav role="navigation">
+                                  <div class="container">
+                                    <div class="row full-height align-items-center">
+                                      <div class="col-md-6">
+                                        <ul class="list-unstyled menu">
+                                          <li><a href="/">Home</a></li>
+                                          <li class="active"><a href="hotel">Hotel</a></li>
+                                              <li><a href="resturant">Resturant</a></li>
+                                              <li><a href="electronics">Electronics</a></li>
+
+
+                                        </ul>
+
+                                      </div>
+                                      <div class="col-md-6">
+                                       <ul class="list-unstyled menu">
+                                         <li><a href="medical">Medical</a></li>
+                                         <li><a href="logInAdmin">Admin</a></li>
+                                         <li><a href="logIn"class="fab fa-google fa-lg">Chat</a></li>
+                                     <li><a href="logInAdmin">Sign in</a></li>
+                                     <li class="logged-in">
+                                       <a href="#" class="grey-text" id="logout">Logout</a>
+                                     </li>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </header>
+
+          <!-- END head -->
+
+          <section class="site-hero overlay" style="background-image: url(./asset/img/1.jpg)">
+            <div class="container">
+              <div class="row site-hero-inner justify-content-center align-items-center">
+                <div class="col-md-10 text-center">
+                  <h1 data-aos="fade-up" data-aos-delay="100" class="mr-md-2 mr-0 mb-3 d-sm-inline d-block">chat with other in the site</h1>
+                </div>
+              </div>
+              <!-- <a href="#" class="scroll-down">Scroll Down</a> -->
+            </div>
           <div id="mario-chat">
-               <h2>chatRoom</h2>
+               <h2 id="down">chatRoom</h2>
                <div id="chat-window">
                    <div id="output"></div>
                </div>
                <input id="handle" type="text" placeholder="Handle" />
                <input id="message" type="text" placeholder="Message" />
-               <button id="send">Send</button>
+               <button id="send">Send message</button>
            </div>
-          <button id="google-signin" onclick={signInWithGoogle()}>
-      Sign In With Google
-  </button>
+           <a href="logInAdmin" id="google-signin">
+           <h1 id="down">  Sign In from here </h1> </a>
             <button class="btn btn-" id="signout" onclick={signOut()} style="display: none; visibility: hidden;" >
                Sign Out</button>
 
@@ -166,6 +212,7 @@ button{
               .setAttribute('style', 'display: none; visibility: hidden')
               document.getElementById('signout')
               .setAttribute('style', 'display: inline-block; visibility: visible')
+
           } else {
               console.log( 'User not signed in.' )
               document.getElementById('mario-chat')
@@ -230,5 +277,37 @@ socket.on('chat', function(data){
     output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
   </script>
+
+      <script src="./asset/js/jquery-3.2.1.min.js"></script>
+      <script src="./asset/js/popper.min.js"></script>
+      <script src="./asset/js/bootstrap.min.js"></script>
+      <script src="./asset/js/owl.carousel.min.js"></script>
+      <script src="./asset/js/jquery.waypoints.min.js"></script>
+      <script src="./asset/js/aos.js"></script>
+      <script src="./asset/js/main.js"></script>
+      <style>
+
+
+      body{
+          font-family: 'Nunito';
+          background: #ecc1c1
+      }
+
+
+h2{
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #575ed8;
+}
+
+      h1{
+          color: #20255f;
+          text-decoration: none;
+          font-size: 25px;
+          padding: 10px;
+          font-weight: bold
+      }
+
+      </style>
     </body>
 </html>

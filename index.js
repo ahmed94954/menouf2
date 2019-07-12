@@ -21,11 +21,6 @@ app.use('/asset',express.static("asset"));
 app.set('view engine', 'ejs');
 homeController(app);
 detailsController(app);
-
-
-app.get('/FEE', function (req, res) {
-  res.render('FEE')
-})
 app.get('/logIn', function (req, res) {
   res.render('logIn')
 })
@@ -47,9 +42,6 @@ app.get('/electronicsAdmin', function (req, res) {
 
 app.get('/hotelAdmin', function (req, res) {
   res.render('hotelAdmin')
-})
-app.get('/FEEAdmin', function (req, res) {
-  res.render('FEEAdmin')
 })
 app.get('/medicalAdmin', function (req, res) {
   res.render('medicalAdmin')
@@ -86,20 +78,12 @@ app.get('/logInAdmin', function (req, res) {
   res.render('logInAdmin')
 })
 app.get('/search', function (req, res) {
-  res.render('search', {title:'find what u want' , user:req.user})
+  res.render('search')
 })
-app.post('/search', function (req, res) {
-  var name = req.body.search;
-  var regex = new RegExp(name , 'i');
-  resturant.find({'$or' : [{'name':regex}]},(err,data) => {
-    if(err){
-      console.log(err);
-    }
-    res.redirect('/resturant-profile/'+data[0]._id);
-  })
-})
+
+
 
 
 
 server.listen(port)
-console.log(`listining to ${port}`)
+console.log(`listining to ${port}`);

@@ -9,9 +9,10 @@ const setupUI = (user) => {
   if (user) {
     if (user.admin) {
       adminItems.forEach(item => item.style.display = 'block');
+    
     }
     if (!user.admin) {
-         window.location.href = "/";
+      window.history.back()
     }
 
     // account info
